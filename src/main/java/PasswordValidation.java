@@ -19,7 +19,7 @@ public class PasswordValidation {
     }
 
     public static String getInputString() {
-        System.out.print("Please enter a password with at least 8 characters and 1 number: ");
+        System.out.print("Please enter a password: ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
