@@ -100,7 +100,7 @@ public class PasswordValidation {
     }
 
     public static String isPasswordListValid(String password) {
-        if (!checkIfStringIsEmpty(password)) {
+        if (checkIfStringIsEmpty(password)) {
             return "Input string was empty!";
         }
         if (!checkLengthOfInputString(password)) {
@@ -126,7 +126,7 @@ public class PasswordValidation {
 
     //methods to execute program
     public static String getMethod() {
-        System.out.print("Please choose whether you like to create a single password(1) or a list of passwords(2):");
+        System.out.print("Please choose whether you like to create a single password(1) or a list of passwords(2): ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
