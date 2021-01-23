@@ -32,10 +32,14 @@ public class PasswordValidation {
         return Integer.parseInt(scanner.nextLine());
     }
 
+    public static boolean checkIfStringIsEmpty(String password) {
+        return password.isEmpty();
+    }
+
     public static boolean checkLengthOfInputString(String password) {
         return password.length() >= 8;
     }
-    
+
     public static boolean checkStringForNumbers(String password) {
         for (char c : password.toCharArray()) {
             if (Character.isDigit(c)) {
@@ -72,6 +76,10 @@ public class PasswordValidation {
 
     //aggregated checks
     public static String isPasswordValid(String password) {
+        if (checkIfStringIsEmpty(password)) {
+            System.out.println("Input string was empty!");
+            return isPasswordValid(getInputString());
+        }
         if (!checkLengthOfInputString(password)) {
             printErrorMessage();
             return isPasswordValid(getInputString());
@@ -88,10 +96,13 @@ public class PasswordValidation {
             printErrorMessage();
             return isPasswordValid(getInputString());
         }
-        return "Password is valid! Password has been set to" + password;
+        return "Password is valid! Password has been set to: " + password;
     }
 
     public static String isPasswordListValid(String password) {
+        if (!checkIfStringIsEmpty(password)) {
+            return "Input string was empty!";
+        }
         if (!checkLengthOfInputString(password)) {
             return "Password invalid!";
         }
@@ -104,7 +115,7 @@ public class PasswordValidation {
         if (!checkStringForUpperCase(password)) {
             return "Password invalid!";
         }
-        return "Password is valid! Password has been set to" + password;
+        return "Password is valid! Password has been set to: " + password;
     }
 
     public static void checkListOfPasswords(ArrayList<String> passwords) {
