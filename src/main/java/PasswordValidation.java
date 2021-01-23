@@ -1,24 +1,29 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class PasswordValidation {
 
     public static void main(String[] args) {
 
-        getChosenMethod(chooseMethod());
-
-        /*checkListOfPasswords(getPasswordList(getListLength()));
-
-        String passwordValid = isPasswordValid(getInputString());
-        System.out.println(passwordValid);*/
+        runChosenMethod(getMethod());
 
     }
 
+
+    //methods to get and check passwords
     public static String getInputString() {
         System.out.print("Please enter a password: ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
+    }
+
+    public static ArrayList<String> getPasswordList(int numberOfPasswords) {
+        ArrayList<String> passwordList = new ArrayList<>();
+
+        for (int i = 0; i < numberOfPasswords; i++)
+            passwordList.add(getInputString());
+
+        return passwordList;
     }
 
     public static int getListLength() {
@@ -29,10 +34,8 @@ public class PasswordValidation {
 
     public static boolean checkLengthOfInputString(String password) {
         return password.length() >= 8;
-
-
     }
-
+    
     public static boolean checkStringForNumbers(String password) {
         for (char c : password.toCharArray()) {
             if (Character.isDigit(c)) {
@@ -67,6 +70,7 @@ public class PasswordValidation {
         System.out.println("Password has to contain at least one number.");
     }
 
+    //aggregated checks
     public static String isPasswordValid(String password) {
         if (!checkLengthOfInputString(password)) {
             printErrorMessage();
@@ -104,41 +108,26 @@ public class PasswordValidation {
     }
 
     public static void checkListOfPasswords(ArrayList<String> passwords) {
-
         for (int i = 0; passwords.size() > i; i++) {
             System.out.println((i + 1) + ". Password: " + isPasswordListValid(passwords.get(i)));
-
         }
-
     }
 
-    public static ArrayList<String> getPasswordList(int numberOfPasswords) {
-
-        ArrayList<String> passwordList = new ArrayList<>();
-
-        for (int i = 0; i < numberOfPasswords; i++)
-            passwordList.add(getInputString());
-
-        return passwordList;
-    }
-
-    public static String chooseMethod() {
+    //methods to execute program
+    public static String getMethod() {
         System.out.print("Please choose whether you like to create a single password(1) or a list of passwords(2):");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
-
     }
 
-    public static void getChosenMethod(String s) {
+    public static void runChosenMethod(String s) {
         if ((s.equals("1"))) {
             String passwordValid = isPasswordValid(getInputString());
             System.out.println(passwordValid);
         } else if ((s.equals("2"))) {
             checkListOfPasswords(getPasswordList(getListLength()));
         }
-
     }
-
 }
 
 
