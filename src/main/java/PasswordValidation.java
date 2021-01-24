@@ -26,6 +26,7 @@ public class PasswordValidation {
         return passwordList;
     }
 
+    //TO-DO exception handling falls input kein int (parseInt throws exception...)
     public static int getListLength() {
         System.out.print("Please enter the amount of passwords you want to add to the list: ");
         Scanner scanner = new Scanner(System.in);
@@ -128,14 +129,23 @@ public class PasswordValidation {
     public static String getMethod() {
         System.out.print("Please choose whether you like to create a single password(1) or a list of passwords(2): ");
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        String chosenMethod = scanner.nextLine();
+        if (!checkIfStringIsEmpty(chosenMethod)) {
+            return chosenMethod;
+        }
+        if (!(chosenMethod.equals("1") || chosenMethod.equals("2"))) {
+            System.out.println("Nice try!");
+            runChosenMethod(getMethod());
+        }
+        return getMethod();
     }
 
     public static void runChosenMethod(String s) {
         if ((s.equals("1"))) {
             String passwordValid = isPasswordValid(getInputString());
             System.out.println(passwordValid);
-        } else if ((s.equals("2"))) {
+        }
+        if ((s.equals("2"))) {
             checkListOfPasswords(getPasswordList(getListLength()));
         }
     }
