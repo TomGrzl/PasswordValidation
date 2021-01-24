@@ -26,7 +26,7 @@ public class PasswordValidation {
         return passwordList;
     }
 
-    //TO-DO exception handling falls input kein int (parseInt throws exception...)
+    //TO-DO exception handling if input is not an int (parseInt throws exception...)
     public static int getListLength() {
         System.out.print("Please enter the amount of passwords you want to add to the list: ");
         Scanner scanner = new Scanner(System.in);
@@ -126,6 +126,7 @@ public class PasswordValidation {
     }
 
     //methods to execute program
+    //TO-DO program does not behave as expected when entering wrong or empty user input
     public static String getMethod() {
         System.out.print("Please choose whether you like to create a single password(1) or a list of passwords(2): ");
         Scanner scanner = new Scanner(System.in);
