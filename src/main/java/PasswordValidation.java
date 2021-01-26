@@ -131,14 +131,14 @@ public class PasswordValidation {
         System.out.print("Please choose whether you like to create a single password(1) or a list of passwords(2): ");
         Scanner scanner = new Scanner(System.in);
         String chosenMethod = scanner.nextLine();
-        if (!checkIfStringIsEmpty(chosenMethod)) {
+        /*if (!checkIfStringIsEmpty(chosenMethod)) {
             return chosenMethod;
-        }
+        } */
         if (!(chosenMethod.equals("1") || chosenMethod.equals("2"))) {
             System.out.println("Nice try!");
             runChosenMethod(getMethod());
         }
-        return getMethod();
+        return chosenMethod;
     }
 
     public static void runChosenMethod(String s) {
